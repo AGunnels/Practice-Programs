@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rock, Paper, Scissors</title>
+</head>
+
+<body>
+    <div id="game">
+        <!-- Ask player to play -->
+        <p>Press r, p, or s to start playing!</p>
+    </div>
+    <script type="text/javascript">
+
+        var computerChoice = [
+            "r",
+            "p",
+            "s"];
+
+        var wins = 0;
+        var losses = 0;
+        var ties = 0;
+
+        // Start game and store the user guess
+        document.onkeyup = function (event) {
+            var userGuess = event.key;
+        
+
+        var randomComputerPlay = computerChoice[Math.floor(Math.random() * computerChoice.length)];
+
+        // Determine outcome of game play and add counters for wins, losses, and ties
+
+        if ((userGuess === "r") || (userGuess === "s") || (userGuess === "p")) {
+
+            if ((userGuess === "r") && (randomComputerPlay === "s")) {
+                wins++;
+            } else if ((userGuess === "r") && (randomComputerPlay === "p")) {
+                losses++;
+            } else if ((userGuess === "s") && (randomComputerPlay === "r")) {
+                losses++;
+            } else if ((userGuess === "s") && (randomComputerPlay === "p")) {
+                wins++;
+            } else if ((userGuess === "p") && (randomComputerPlay === "r")) {
+                wins++;
+            } else if ((userGuess === "p") && (randomComputerPlay === "s")) {
+                losses++;
+            } else if (userGuess === randomComputerPlay) {
+                ties++;
+            }
+            console.log(userGuess);
+            var html = 
+                "<p>You chose: " + userGuess + "</p>" +
+                "<p>The computer chose: " + computerGuess + "</p>" +
+                "<p>wins: " + wins + "</p>" +
+                "<p>losses: " + losses + "</p>" +
+                "<p>ties: " + ties + "</p>";
+
+            // Set the inner HTML contents of the #game div to our html string
+            document.querySelector("#game").innerHTML = html;
+        }
+    };
+
+
+    </script>
+</body>
+
+</html>
